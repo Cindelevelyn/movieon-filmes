@@ -111,6 +111,29 @@ app.get("/filme", async (req, res) => {
   });
 });
 
+app.get("/sucesso", async (req, res) => {
+  res.render("sucesso", {
+    layout: "user",
+    class: "",
+    user: "cindy",
+    tituloPagina: "movieon | cadastro",
+  });
+});
+
+app.get("/contato", async (req, res) => {
+  res.render("contato", {
+    class: "",
+    tituloPagina: "movieon | contato",
+  });
+});
+
+app.get("/sobre", async (req, res) => {
+  res.render("sobre", {
+    class: "",
+    tituloPagina: "movieon | sobre",
+  });
+});
+
 app.listen(PORT, function () {
   console.log(`App de Exemplo escutando na porta ${PORT}`);
 });

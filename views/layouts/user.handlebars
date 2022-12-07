@@ -24,7 +24,7 @@
   <header class="d-flex flex-row justify-content-between p-2 align-items-center">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
-        <a class="navbar-brand pe-4" href="#"><img src="/assets/logo.png" width="100" alt="" /></a>
+        <a class="navbar-brand pe-4" href="/home"><img src="/assets/logo.png" width="100" alt="" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,8 +32,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav gap-5">
             <a class="nav-link" href="/home">Filmes</a>
-            <a class="nav-link" href="#">Contato</a>
-            <a class="nav-link" href="#">Sobre</a>
+            <a class="nav-link" href="/contato">Contato</a>
+            <a class="nav-link" href="/sobre">Sobre</a>
           </div>
         </div>
       </div>
@@ -53,22 +53,24 @@
     {{{body}}}
   </div>
 
-  <div class="{{classfooter}} m-auto h4 pb-2 mb-4 w-75 text-danger border-bottom border-light opacity-25">
-  </div>
-  <h5 class="{{classfooter}} text-center text-white">Nos siga nas redes:</h5>
-  <ul class=" {{classfooter}} d-flex flex-row gap-2 justify-content-center">
-    <li>
-      <ion-icon class="text-white fs-1" name="logo-linkedin"></ion-icon>
-    </li>
-    <li>
-      <ion-icon class="text-white fs-1" name="logo-instagram"></ion-icon>
-    </li>
-    <li>
-      <ion-icon class="text-white fs-1" name="logo-twitter"></ion-icon>
-    </li>
-  </ul>
 
-  <footer class="mt-auto text-center text-white opacity-25">IFSULDEMINAS - 2022</footer>
+  <footer class="mt-auto text-center text-white opacity-25">
+    <div class="{{classfooter}} m-auto h4 pb-2 mb-4 w-75 text-danger border-bottom border-light opacity-25">
+    </div>
+    <h5 class="{{classfooter}} text-center text-white">Nos siga nas redes:</h5>
+    <ul class=" {{classfooter}} d-flex flex-row gap-2 justify-content-center">
+      <li>
+        <ion-icon class="text-white fs-1" name="logo-linkedin"></ion-icon>
+      </li>
+      <li>
+        <ion-icon class="text-white fs-1" name="logo-instagram"></ion-icon>
+      </li>
+      <li>
+        <ion-icon class="text-white fs-1" name="logo-twitter"></ion-icon>
+      </li>
+    </ul>
+    IFSULDEMINAS - 2022
+  </footer>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
