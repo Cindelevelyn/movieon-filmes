@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap");
+
+body {
+  background: #222;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-index {
+  width: 120px;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.5rem;
+}
+
+.btn-index:nth-child(1):hover {
+  background: white;
+  color: #3c98a5;
+}
+
+.btn-index:nth-child(2):hover {
+  color: #3c98a5;
+}
+
+.btn-index:nth-child(1) {
+  background: #3c98a5;
+}
+
+.btn-index:nth-child(2) {
+  border: 2px solid #3c98a5;
+}
+
+.index-main {
+  color: white;
+  background: linear-gradient(180deg, #393939 -29.45%, rgba(57, 57, 57, 0) 26.46%);
+}
+
+.etiqueta {
+  background: #3c98a5;
+  padding: 0.5rem 1.5rem;
+  width: 265px;
+  height: 41px;
+}
+
+.filme:hover p{
+  color: gray;
+}
+
+.filme img {
+  width: 180px;
+  height: 250px;
+}
+
+.filme p {
+  color: white;
+  font-size: 14px;
+}
+
+.card {
+  width: 300px;
+  height: 450px;
+  background: linear-gradient(180deg, #3c98a5 0%, #bed1d3 100%);
+  border-radius: 10px;
+  transition: transform .2s;
+  z-index: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.card-inf{
+  padding: 10px;
+  transition: transform .2s;
+  background: #B8CED1;
+  width: 280px;
+  height: 100px;
+  color: #222;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.cards{
+  min-height: 550px;
+  height: auto;
+}
+
+.card:hover{
+  transform: scale(1.1);
+  transition: transform .2s; /* Animation */
+}
+
+.card .titulo{
+  position: relative;
+  bottom: 30px;
+  font-size: 20px;
+  color: #222;
+}
+
+.card img{
+  position: relative;
+  top: -40px;
+  z-index: 10000;
+}
+
+.number-card{
+  font-size: 120px;
+  position: relative;
+  top: 50px;
+  left: -100px;
+  opacity: 25%;
+}
+
+.fidelidade{
+  height: 500px;
+}
