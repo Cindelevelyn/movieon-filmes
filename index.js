@@ -48,7 +48,7 @@ app.use(express.json());
 //   const connection = await mysql.createConnection({
 //     host: "localhost",
 //     user: "root",
-//     password: "b@ngtH0226",
+//     password: "",
 //     database: "",
 //   });
 //   return connection;
@@ -64,6 +64,7 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   res.render("index", {
+    class: "d-none",
     tituloPagina: "movieon",
   });
 });
@@ -79,6 +80,34 @@ app.get("/cadastro", async (req, res) => {
   res.render("cadastro", {
     layout: "login",
     tituloPagina: "movieon | cadastro",
+  });
+});
+
+app.get("/home", async (req, res) => {
+  res.render("index", {
+    layout: "user",
+    class: "",
+    user: "cindy",
+    tituloPagina: "movieon | cadastro",
+  });
+});
+
+app.get("/filme", async (req, res) => {
+  let valor = 19.0;
+
+  filme = {
+    titulo: "A espera de um milagre",
+    valor: valor.toFixed(2),
+    sinopse:
+      "Um carcereiro tem um relacionamento incomum e comovente com um preso que está no corredor na morte: Coffey, um negro enorme, condenado por ter matado brutalmente duas gêmeas de nove anos.",
+  };
+
+  res.render("filme", {
+    user: "cindy",
+    layout: "user",
+    filme: filme,
+    classfooter: "d-none",
+    tituloPagina: "movieon | filme",
   });
 });
 

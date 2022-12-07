@@ -1,0 +1,194 @@
+<div class="container-fluid">
+  <div class="index-main d-flex row justify-content-center align-items-center">
+
+    {{!-- direita --}}
+    <div class="col-xl-4 col-xs-12 p-4 d-flex flex-column justify-content-center align-items-center">
+
+      <img src="/assets/filmes/aedum.jpg" width="300" alt="" />
+
+      <div class="mt-4 d-flex flex-row gap-5">
+        <input type="radio" class="btn-check" name="options-outlined" id="primary-outlined" autocomplete="off">
+        <label class="btn btn-outline-primary" for="primary-outlined">Sessão 1</label>
+
+        <input type="radio" class="btn-check" name="options-outlined" id="primary-2-outlined" autocomplete="off">
+        <label class="btn btn-outline-primary" for="primary-2-outlined">Sessão 2</label>
+      </div>
+    </div>
+
+    {{!-- esquerda --}}
+    <div class="d-xl-none d-xs-block">
+      <div class="valor-xs">
+        <p>R$20.00</p>
+        <span>-5%</span>
+        <strong>R${{filme.valor}}</strong>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-xs-12 position-relative">
+      <div class="d-none d-xl-block valor">
+        <p>R$20.00</p>
+        <span>-5%</span>
+        <strong>R${{filme.valor}}</strong>
+      </div>
+      <h2><strong>{{filme.titulo}}</strong></h2>
+      <p>{{filme.sinopse}}</p>
+
+      <div class="d-flex flex-row justify-content-between text-center">
+        <div class="legenda">cadeira ocupada</div>
+        <div class="legenda">cadeira selecionada</div>
+      </div>
+
+      {{!-- cadeiras --}}
+      <div class="container d-flex flex-row justify-content-center gap-3">
+        <div class="d-flex flex-column justify-content-center gap-1">
+          <p>A</p>
+          <p>B</p>
+          <p>C</p>
+        </div>
+        <div class="d-flex flex-column gap-3 mt-4 align-items-center">
+          <div class="d-flex flex-row justify-content-center gap-2">
+            <label for="cadeira">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira1" id="cadeira" value="1">
+              <span class="material-symbols-outlined cadeira" for="cadeira">chair</span>
+            </label>
+            <label for="cadeira2">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira2" id="cadeira2" value="2">
+              <span class="material-symbols-outlined cadeira" for="cadeira2">chair</span>
+            </label>
+            <label for="cadeira3">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira3" id="cadeira3" value="3">
+              <span class="material-symbols-outlined cadeira" for="cadeira3">chair</span>
+            </label>
+            <label for="cadeira4">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira4" id="cadeira4" value="4">
+              <span class="material-symbols-outlined cadeira" for="cadeira4">chair</span>
+            </label>
+            <label for="cadeira5">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira5" id="cadeira5" value="5">
+              <span class="material-symbols-outlined cadeira" for="cadeira5">chair</span>
+            </label>
+            <label for="cadeira6">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira6" id="cadeira6" value="6">
+              <span class="material-symbols-outlined cadeira" for="cadeira6">chair</span>
+            </label>
+            <label for="cadeira7">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira7" id="cadeira7" value="7">
+              <span class="material-symbols-outlined cadeira" for="cadeira7">chair</span>
+            </label>
+            <label for="cadeira8">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira8" id="cadeira8" value="8">
+              <span class="material-symbols-outlined cadeira" for="cadeira8">chair</span>
+            </label>
+            <label for="cadeira9">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira9" id="cadeira9" value="91">
+              <span class="material-symbols-outlined cadeira" for="cadeira9">chair</span>
+            </label>
+            <label for="cadeira10">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira10" id="cadeira10" value="10">
+              <span class="material-symbols-outlined cadeira" for="cadeira10">chair</span>
+            </label>
+          </div>
+
+          <div class="d-flex flex-row justify-content-center gap-2">
+            <label for="cadeira11">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira11" id="cadeira11" value="11">
+              <span class="material-symbols-outlined cadeira" for="cadeira11">chair</span>
+            </label>
+            <label for="cadeira12">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira12" id="cadeira12" value="12">
+              <span class="material-symbols-outlined cadeira" for="cadeira12">chair</span>
+            </label>
+            <label for="cadeira13">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira13" id="cadeira13" value="13">
+              <span class="material-symbols-outlined cadeira" for="cadeira13">chair</span>
+            </label>
+            <label for="cadeira14">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira14" id="cadeira14" value="14">
+              <span class="material-symbols-outlined cadeira" for="cadeira14">chair</span>
+            </label>
+            <label for="cadeira15">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira15" id="cadeira15" value="15">
+              <span class="material-symbols-outlined cadeira" for="cadeira15">chair</span>
+            </label>
+            <label for="cadeira16">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira16" id="cadeira16" value="16">
+              <span class="material-symbols-outlined cadeira" for="cadeira16">chair</span>
+            </label>
+            <label for="cadeira17">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira17" id="cadeira17" value="17">
+              <span class="material-symbols-outlined cadeira" for="cadeira17">chair</span>
+            </label>
+            <label for="cadeira18">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira18" id="cadeira18" value="18">
+              <span class="material-symbols-outlined cadeira" for="cadeira18">chair</span>
+            </label>
+            <label for="cadeira19">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira19" id="cadeira19" value="19">
+              <span class="material-symbols-outlined cadeira" for="cadeira19">chair</span>
+            </label>
+            <label for="cadeira20">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira20" id="cadeira20" value="20">
+              <span class="material-symbols-outlined cadeira" for="cadeira20">chair</span>
+            </label>
+          </div>
+
+          <div class="d-flex flex-row justify-content-center gap-2">
+            <label for="cadeira21">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira21" id="cadeira21" value="21">
+              <span class="material-symbols-outlined cadeira" for="cadeira21">chair</span>
+            </label>
+            <label for="cadeira22">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira22" id="cadeira22" value="22">
+              <span class="material-symbols-outlined cadeira" for="cadeira22">chair</span>
+            </label>
+            <label for="cadeira23">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira23" id="cadeira23" value="23">
+              <span class="material-symbols-outlined cadeira" for="cadeira23">chair</span>
+            </label>
+            <label for="cadeira24">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira24" id="cadeira24" value="24">
+              <span class="material-symbols-outlined cadeira" for="cadeira24">chair</span>
+            </label>
+            <label for="cadeira25">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira25" id="cadeira25" value="25">
+              <span class="material-symbols-outlined cadeira" for="cadeira25">chair</span>
+            </label>
+            <label for="cadeira26">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira26" id="cadeira26" value="26">
+              <span class="material-symbols-outlined cadeira" for="cadeira26">chair</span>
+            </label>
+            <label for="cadeira27">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira27" id="cadeira27" value="27">
+              <span class="material-symbols-outlined cadeira" for="cadeira27">chair</span>
+            </label>
+            <label for="cadeira28">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira28" id="cadeira28" value="28">
+              <span class="material-symbols-outlined cadeira" for="cadeira28">chair</span>
+            </label>
+            <label for="cadeira29">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira29" id="cadeira29" value="29">
+              <span class="material-symbols-outlined cadeira" for="cadeira29">chair</span>
+            </label>
+            <label for="cadeira30">
+              <input class="visually-hidden cadeira-check" type="checkbox" name="cadeira30" id="cadeira30" value="30">
+              <span class="material-symbols-outlined cadeira" for="cadeira30">chair</span>
+            </label>
+          </div>
+
+          <div class="bg-light w-75 text-dark text-center">
+            Telão
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end align-items-end mt-5">
+        <div class="bg-primary col-2 col-xl-1 col-lg-1 col-md-2 col-sm-2 pb-2 pt-2 rounded">
+          <a class="text-white text-decoration-none text-center" href=""><span
+              class="d-flex justify-content-center material-symbols-outlined">
+              chevron_right
+            </span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

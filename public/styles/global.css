@@ -38,7 +38,11 @@ body {
 
 .index-main {
   color: white;
-  background: linear-gradient(180deg, #393939 -29.45%, rgba(57, 57, 57, 0) 26.46%);
+  background: linear-gradient(
+    180deg,
+    #393939 -29.45%,
+    rgba(57, 57, 57, 0) 26.46%
+  );
 }
 
 .etiqueta {
@@ -48,7 +52,7 @@ body {
   height: 41px;
 }
 
-.filme:hover p{
+.filme:hover p {
   color: gray;
 }
 
@@ -67,16 +71,16 @@ body {
   height: 450px;
   background: linear-gradient(180deg, #3c98a5 0%, #bed1d3 100%);
   border-radius: 10px;
-  transition: transform .2s;
+  transition: transform 0.2s;
   z-index: 0;
   margin-left: 10px;
   margin-right: 10px;
 }
 
-.card-inf{
+.card-inf {
   padding: 10px;
-  transition: transform .2s;
-  background: #B8CED1;
+  transition: transform 0.2s;
+  background: #b8ced1;
   width: 280px;
   height: 100px;
   color: #222;
@@ -84,30 +88,30 @@ body {
   text-align: center;
 }
 
-.cards{
+.cards {
   min-height: 550px;
   height: auto;
 }
 
-.card:hover{
+.card:hover {
   transform: scale(1.1);
-  transition: transform .2s; /* Animation */
+  transition: transform 0.2s; /* Animation */
 }
 
-.card .titulo{
+.card .titulo {
   position: relative;
   bottom: 30px;
   font-size: 20px;
   color: #222;
 }
 
-.card img{
+.card img {
   position: relative;
   top: -40px;
   z-index: 10000;
 }
 
-.number-card{
+.number-card {
   font-size: 120px;
   position: relative;
   top: 50px;
@@ -115,6 +119,92 @@ body {
   opacity: 25%;
 }
 
-.fidelidade{
+.fidelidade {
   height: 500px;
+}
+
+.btn-check:checked {
+  background: #3c98a5 !important;
+  color: white !important;
+}
+
+.valor p {
+  position: absolute;
+  right: 23px;
+  top: -18px;
+  font-size: 20px;
+  text-decoration: line-through;
+}
+
+.valor span {
+  background: #3c98a5;
+  border-radius: 100%;
+  padding: 5px;
+  position: absolute;
+  right: 0px;
+  top: -35px;
+  font-size: 13px;
+  border: 3px solid #222;
+}
+
+.valor-xs p {
+  position: relative;
+  right: -125px;
+  top: -18px;
+  font-size: 15px;
+  text-decoration: line-through;
+}
+
+.valor-xs span {
+  background: #3c98a5;
+  border-radius: 100%;
+  padding: 5px;
+  position: relative;
+  right: -120px;
+  top: -35px;
+  font-size: 13px;
+  border: 3px solid #222;
+}
+
+.valor-xs {
+  margin: 20px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  font-size: 30px;
+}
+
+.valor {
+  position: absolute;
+  right: 0px;
+  font-size: 30px;
+}
+
+.cadeira:hover {
+  cursor: pointer;
+  color: #646464;
+}
+
+.cadeira-check:checked + .cadeira {
+  color: #3c98a5;
+}
+
+.legenda:nth-of-type(1)::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background: #646464;
+  margin-right: 20px;
+}
+
+.legenda:nth-of-type(2)::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  background: #3c98a5;
+  margin-right: 20px;
 }
