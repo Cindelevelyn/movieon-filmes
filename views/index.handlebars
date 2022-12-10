@@ -1,65 +1,53 @@
 <main class="index-main">
-      <div class="container d-flex justify-content-center {{class}}">
-        <h3 class="pt-4 pb-4 text-white">Bem vindo(a), {{user}}!</h3>
-      </div>
-  <label class="text-end etiqueta mt-4">Filmes em cartaz</label>
+  <div class="container d-flex justify-content-center {{class}}">
+    <h3 class="pt-4 pb-4 text-white">Bem vindo(a), {{user}}!</h3>
+  </div>
+  <div class="d-flex row justify-content-between align-items-center">
+    <label class="text-end etiqueta mt-4">Filmes em cartaz</label>
+    <div class="{{classADMIN}} me-5 col-xl-2 mt-sm-4 mt-xs-4">
+      <a class="text-white text-decoration-none" href="/cadastro-filme"><span
+          class="btn-cadastro-filme rounded text-center mt-4">Add filme</span></a>
+    </div>
+  </div>
   <div class="container-fluid d-flex justify-content-center row mt-4">
     <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a
-        class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center"
-        href="/filme"
-      >
+      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="/filme">
         <img src="/assets/filmes/aedum.jpg" alt="" />
         <p>A espera de um milagre</p>
       </a>
     </div>
     <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a
-        class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center"
-        href=""
-      >
+      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
         <img src="/assets/filmes/click.jpg" alt="" />
         <p>Click</p>
-      </a></div>
+      </a>
+    </div>
     <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a
-        class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center"
-        href=""
-      >
+      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
         <img src="/assets/filmes/af.jpg" alt="" />
         <p>Animais Fantásticos</p>
       </a>
     </div>
     <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a
-        class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center"
-        href=""
-      >
+      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
         <img src="/assets/filmes/crepusculo.jpg" alt="" />
         <p>Crepusculo</p>
       </a>
     </div>
     <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a
-        class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center"
-        href=""
-      >
+      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
         <img src="/assets/filmes/ha.jpg" alt="" />
         <p>Homem Aranha</p>
       </a>
     </div>
   </div>
-  <div
-    class="m-auto h4 pb-2 mb-4 w-75 text-danger border-bottom border-light opacity-25"
-  >
+  <div class="m-auto h4 pb-2 mb-4 w-75 text-danger border-bottom border-light opacity-25">
   </div>
 
   <div class="container">
     <h2 class="pt-4">Plano Fidelidade</h2>
   </div>
-  <div
-    class="container-fluid mt-5 d-flex row gap-5 justify-content-center mb-5 cards"
-  >
+  <div class="container-fluid mt-5 d-flex row gap-5 justify-content-center mb-5 cards">
     <div class="fidelidade d-flex justify-content-center align-items-center col-xl-3 col-xs-12">
       <div class="card d-flex justify-content-center align-items-center">
         <h2 class="number-card">1</h2>

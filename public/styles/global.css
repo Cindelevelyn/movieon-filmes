@@ -52,6 +52,12 @@ body {
   height: 41px;
 }
 
+.btn-cadastro-filme {
+  border: 2px solid #3c98a5;
+  border-radius: 20px;
+  padding: 10px;
+}
+
 .filme:hover p {
   color: gray;
 }

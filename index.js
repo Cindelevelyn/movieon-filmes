@@ -1,7 +1,7 @@
 const express = require("express");
 const expressHandlebars = require("express-handlebars");
-// const sessions = require("express-session");
-// const cookieParser = require("cookie-parser");
+const sessions = require("express-session");
+const cookieParser = require("cookie-parser");
 // const uuidv4 = require("uuid").v4;
 const path = require("path");
 // const db = require("./db");
@@ -21,50 +21,51 @@ app.set("views", "./views");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cookieParser());
-// app.use(
-//   sessions({
-//     secret: "thisIsMySecretKey",
-//     saveUninitialized: true,
-//     resave: false,
-//     name: "Cookie de Sessao",
-//     cookie: { maxAge: 1000 * 60 * 3 }, // 3 minutos
-//   })
-// );
+app.use(cookieParser());
+app.use(
+  sessions({
+    secret: "thisIsMySecretKey",
+    saveUninitialized: true,
+    resave: false,
+    name: "Cookie de Sessao",
+    cookie: { maxAge: 1000 * 60 * 3 }, // 3 minutos
+  })
+);
 
-// app.use("*", async function (req, res, next) {
-//   if (!req.session.usuario && req.cookies.token) {
-//     const resultado = await db.query("SELECT * FROM usuarios WHERE token = ?", [
-//       req.cookies.token,
-//     ]);
-//     if (resultado.length) {
-//       req.session.usuario = resultado[0];
-//     }
-//   }
-//   next();
-// });
+async function getConnection() {
+  const connection = await mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "b@ngtH0226",
+    database: "movieon",
+  });
+  return connection;
+}
 
-// async function getConnection() {
-//   const connection = await mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "",
-//     database: "",
-//   });
-//   return connection;
-// }
+async function query(sql = "", values = []) {
+  const conn = await getConnection();
+  const result = await conn.query(sql, values);
+  conn.end();
 
-// async function query(sql = "", values = []) {
-//   const conn = await getConnection();
-//   const result = await conn.query(sql, values);
-//   conn.end();
+  return result[0];
+}
 
-//   return result[0];
-// }
+app.use("*", async function (req, res, next) {
+  if (!req.session.usuario && req.cookies.token) {
+    const resultado = await query("SELECT * FROM usuarios WHERE token = ?", [
+      req.cookies.token,
+    ]);
+    if (resultado.length) {
+      req.session.usuario = resultado[0];
+    }
+  }
+  next();
+});
 
 app.get("/", async (req, res) => {
   res.render("index", {
     class: "d-none",
+    classADMIN: "d-none",
     tituloPagina: "movieon",
   });
 });
@@ -83,10 +84,37 @@ app.get("/cadastro", async (req, res) => {
   });
 });
 
+app.get("/admin", async (req, res) => {
+  res.render("index", {
+    layout: "admin",
+    user: "Admin",
+    tituloPagina: "movieon | ADMIN",
+  });
+});
+
+app.get("/cadastro-filme", async (req, res) => {
+  res.render("cadastro-filme", {
+    layout: "admin",
+    tituloPagina: "movieon | Novo Filme",
+  });
+});
+
+app.post("/cadastro-filme", async (req, res) => {
+  let foto = req.body.foto;
+
+  console.log(foto);
+
+  res.render("cadastro-filme", {
+    layout: "admin",
+    tituloPagina: "movieon | Novo Filme",
+  });
+});
+
 app.get("/home", async (req, res) => {
   res.render("index", {
     layout: "user",
     class: "",
+    classADMIN: "d-none",
     user: "cindy",
     tituloPagina: "movieon | cadastro",
   });
