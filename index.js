@@ -4,9 +4,12 @@ const sessions = require("express-session");
 const cookieParser = require("cookie-parser");
 // const uuidv4 = require("uuid").v4;
 const path = require("path");
-// const db = require("./db");
 
-// const mysql = require("mysql2/promise");
+const multer = require("multer");
+
+const upload = multer({ storage: multer.memoryStorage() });
+
+const mysql = require("mysql2/promise");
 
 const PORT = process.env.PORT || 3000;
 
@@ -36,7 +39,7 @@ async function getConnection() {
   const connection = await mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "b@ngtH0226",
     database: "movieon",
   });
   return connection;
@@ -63,11 +66,26 @@ app.use("*", async function (req, res, next) {
 });
 
 app.get("/", async (req, res) => {
+  if (req.session.usuario) {
+    res.redirect("/home");
+    return;
+  }
+
+  let filmes = await query("SELECT * FROM filme");
+  console.log(filmes);
+
   res.render("index", {
     class: "d-none",
     classADMIN: "d-none",
     tituloPagina: "movieon",
+    listaFilme: filmes,
   });
+});
+
+app.get("/logout", function (req, res) {
+  res.cookie("token", "");
+  req.session.destroy();
+  res.redirect("/entrar");
 });
 
 app.get("/entrar", async (req, res) => {
@@ -77,6 +95,31 @@ app.get("/entrar", async (req, res) => {
   });
 });
 
+app.post("/entrar", async (req, res) => {
+  const { user: usuario, pwd } = req.body;
+  const resultado = await query(
+    "SELECT * FROM usuarios WHERE email = ? AND senha = ?",
+    [usuario, pwd]
+  );
+  console.log(resultado);
+
+  if (resultado.length > 0) {
+    req.session.usuario = resultado[0];
+    if (resultado[0].token == "admin") {
+      res.redirect("/admin");
+    } else {
+      res.redirect("/home");
+    }
+    return;
+  } else {
+    res.render("entrar", {
+      layout: "login",
+      tituloPagina: "movieon | login",
+      mensagemErro: "Usuário/Senha não compatíveis ou existentes.",
+    });
+  }
+});
+
 app.get("/cadastro", async (req, res) => {
   res.render("cadastro", {
     layout: "login",
@@ -84,54 +127,161 @@ app.get("/cadastro", async (req, res) => {
   });
 });
 
+app.post("/cadastro", async (req, res) => {
+  const nome = req.body.nome;
+  const email = req.body.email;
+  const pwd = req.body.pwd;
+
+  let resultado = await query("SELECT * FROM usuarios WHERE email = ?", [
+    email,
+  ]);
+
+  console.log(nome);
+  console.log(email);
+  console.log(pwd);
+
+  console.log(resultado);
+  console.log(resultado.length);
+
+  if (resultado.length > 0) {
+    res.render("cadastro", {
+      tituloPagina: "Cadastro",
+      titulo: "Cadastro",
+      frase:
+        "Utilize o formulário abaixo acima para realizar o cadastro na aplicação.",
+      mensagemErro: "Usuário/Senha já existentes!",
+    });
+  } else {
+    resultado = await query(
+      "INSERT INTO usuarios(nome, email, senha) VALUES(?, ?, ?)",
+      [nome, email, pwd]
+    );
+
+    res.redirect("/entrar");
+    return;
+  }
+});
+
 app.get("/admin", async (req, res) => {
+  if (!req.session.usuario) {
+    res.redirect("/");
+    return;
+  }
+  let filmes = await query("SELECT * FROM filme");
+
   res.render("index", {
     layout: "admin",
-    user: "Admin",
+    user: req.session.usuario,
     tituloPagina: "movieon | ADMIN",
+    listaFilme: filmes,
   });
 });
 
 app.get("/cadastro-filme", async (req, res) => {
   res.render("cadastro-filme", {
     layout: "admin",
+    classfooter: "d-none",
     tituloPagina: "movieon | Novo Filme",
   });
 });
 
 app.post("/cadastro-filme", async (req, res) => {
-  let foto = req.body.foto;
+  const img = req.body.foto;
+  const titulo = req.body.titulo;
+  const duracao = req.body.duracao;
+  const horario1 = req.body.horario1;
+  const horario2 = req.body.horario2;
+  const valor = req.body.valor;
+  const sinopse = req.body.sinopse;
 
-  console.log(foto);
+  const qtdCadeira = 30;
 
-  res.render("cadastro-filme", {
-    layout: "admin",
-    tituloPagina: "movieon | Novo Filme",
-  });
+  const filmeExiste = await query(
+    "SELECT nome FROM filme WHERE nome = ?",
+    titulo
+  );
+
+  if (filmeExiste.length > 0) {
+    res.render("cadastro-filme", {
+      tituloPagina: "Cadastro de Filme",
+      titulo: "Cadastro de Filme",
+      mensagemErro: "O filme já existe!",
+    });
+  } else {
+    let filme =
+      "INSERT INTO filme(nome, duracao, fotoURL, sinopse) VALUES (?,?,?,?)";
+    await query(filme, [titulo, duracao, img, sinopse]);
+
+    console.log(titulo);
+
+    const id_filme = "SELECT id_filme FROM filme WHERE nome = ?";
+    id = await query(id_filme, titulo);
+
+    id = Object.values(id[0]);
+
+    let sessao =
+      "INSERT INTO sessao(id_filme, hora, qtdCadeira, valor) VALUES (?,?,?,?)";
+    await query(sessao, [id, horario1, qtdCadeira, valor]);
+    await query(sessao, [id, horario2, qtdCadeira, valor]);
+
+    res.redirect("/home");
+    return;
+  }
 });
 
 app.get("/home", async (req, res) => {
+  if (!req.session.usuario) {
+    res.redirect("/");
+    return;
+  }
+
+  if (req.session.usuario.token == "admin") {
+    res.redirect("/admin");
+    return;
+  }
+
+  let filmes = await query("SELECT * FROM filme");
+
   res.render("index", {
     layout: "user",
     class: "",
     classADMIN: "d-none",
-    user: "cindy",
+    usuario: req.session.usuario,
     tituloPagina: "movieon | cadastro",
+    listaFilme: filmes,
   });
 });
 
-app.get("/filme", async (req, res) => {
-  let valor = 19.0;
+app.get("/filme/:id", async (req, res) => {
+  if (!req.session.usuario) {
+    res.redirect("/entrar");
+    return;
+  }
+
+  const id = parseInt(req.params.id);
+  let consulta =
+    "SELECT filme.*, sessao.valor, sessao.qtdCadeira, sessao.hora FROM filme LEFT JOIN sessao ON sessao.id_filme = filme.id_filme WHERE filme.id_filme = ?";
+
+  let dados = await query(consulta, [id]);
+
+  let consulta2 = await query("SELECT * from sessao");
+  console.log(consulta2);
+
+  console.log(dados[0].valor);
+
+  let valor = parseFloat(dados[0].valor).toFixed(2);
 
   filme = {
-    titulo: "A espera de um milagre",
-    valor: valor.toFixed(2),
-    sinopse:
-      "Um carcereiro tem um relacionamento incomum e comovente com um preso que está no corredor na morte: Coffey, um negro enorme, condenado por ter matado brutalmente duas gêmeas de nove anos.",
+    fotoURL: dados[0].fotoURL,
+    titulo: dados[0].nome.toUpperCase(),
+    valor: valor,
+    sinopse: dados[0].sinopse,
+    hora: dados[0].hora,
+    hora2: dados[1].hora,
   };
 
   res.render("filme", {
-    user: "cindy",
+    user: req.session.usuario,
     layout: "user",
     filme: filme,
     classfooter: "d-none",
