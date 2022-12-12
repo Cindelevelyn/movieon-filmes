@@ -4,14 +4,14 @@
     {{!-- direita --}}
     <div class="col-xl-4 col-xs-12 p-4 d-flex flex-column justify-content-center align-items-center">
 
-      <img src="/assets/filmes/aedum.jpg" width="300" alt="" />
+      <img src="{{filme.fotoURL}}" width="300" alt="" />
 
       <div class="mt-4 d-flex flex-row gap-5">
         <input type="radio" class="btn-check" name="options-outlined" id="primary-outlined" autocomplete="off">
-        <label class="btn btn-outline-primary" for="primary-outlined">Sessão 1</label>
+        <label class="btn btn-outline-primary" for="primary-outlined">{{filme.hora}}</label>
 
         <input type="radio" class="btn-check" name="options-outlined" id="primary-2-outlined" autocomplete="off">
-        <label class="btn btn-outline-primary" for="primary-2-outlined">Sessão 2</label>
+        <label class="btn btn-outline-primary" for="primary-2-outlined">{{filme.hora2}}</label>
       </div>
     </div>
 
@@ -189,6 +189,8 @@
             </span></a>
         </div>
       </div>
+
+      <input type="hidden" name="id" value="{{filme.id_filme}}">
     </div>
   </div>
 </div>

@@ -1,14 +1,51 @@
 <div class="index-main container-fluid">
-  <div class="row d-flex justify-content-center">
-    <div class="col-6">
-      <form method="post" action="/cadastro-filme">
-        <div class="form-group">
-          <label for="exampleFormControlFile1">Example file input</label>
-          <input type="file" class="form-control-file" name="foto" id="exampleFormControlFile1">
+  <div class="row d-flex justify-content-center align-items-center">
+    <h2 class="text-center mt-4">Adicionar filme</h2>
+    <form action="/cadastro-filme" method="post" class="row d-flex justify-content-center">
+      {{#if mensagemErro}}
+      <p style="color: red; text-align: center;">
+        {{mensagemErro}}
+      </p>
+      {{/if}}
+      <div class="col-xl-4 col-xs-12">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Nome do filme:</label>
+          <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Digite o nome do filme...">
         </div>
-        <button type="submit">enviar</button>
-      </form>
-    </div>
-    <div class="col-6"></div>
+        <div class="mb-3">
+          <label for="duracao" class="form-label">Duração</label>
+          <input type="time" class="form-control" name="duracao" id="duracao">
+        </div>
+
+        <div class="mb-3">
+          <label for="horario1" class="form-label">Horário das sessões:</label>
+          <div class="d-flex flex-row justify-content-between gap-3">
+            <input type="time" class="form-control" name="horario1" id="horario1">
+            <input type="time" class="form-control" name="horario2" id="horario2">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="valor" class="form-label">Valor:</label>
+          <input type="money" class="form-control" name="valor" id="valor">
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-xs-12">
+        <div class="mb-3">
+          <label for="foto" class="form-label">Foto:</label>
+          <input type="url" class="form-control" name="foto" id="foto">
+        </div>
+
+        <div class="mb-3">
+          <label for="sinopse" class="form-label">Sinopse:</label>
+          <textarea class="form-control" name="sinopse" id="sinopse" rows="5"></textarea>
+        </div>
+      </div>
+
+      <div class="row d-flex justify-content-center gap-5">
+        <button type="reset" class="col-xl-2 col-xs-12 mt-2 mb-2 btn btn-transparent text-white border">Limpar</button>
+        <button type="submit" class="col-xl-2 col-xs-12 mt-2 mb-2 btn btn-primary">Cadastrar Filme</button>
+      </div>
+    </form>
   </div>
-</div>

@@ -214,3 +214,13 @@ body {
   background: #3c98a5;
   margin-right: 20px;
 }
+
+.form-control {
+  color: white !important;
+  background-color: transparent !important;
+}
+
+.form-control:valid {
+  color: white !important;
+  background-color: transparent !important;
+}

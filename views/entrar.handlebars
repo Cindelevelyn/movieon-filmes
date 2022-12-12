@@ -1,1 +1,31 @@
-<h1 class="text-white">{{tituloPagina}}</h1>
+<div class="index-main container-fluid">
+  <div class="row d-flex justify-content-around align-items-center p-4">
+    <div class="col-xl-6 col-xs-12 d-flex justify-content-center">
+      <img src="/assets/login_img.png" width="400" alt="">
+    </div>
+    <div class="col-xl-4 col-xs-12 rounded-5 p-4 bg-secondary bg-opacity-25 h-100">
+
+      <form action="/entrar" method="post">
+
+        <h2 class="text-center">Login</h2>
+
+        {{#if mensagemErro}}
+        <p style="color: red; text-align: center;">
+          {{mensagemErro}}
+        </p>
+        {{/if}}
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Email:</label>
+          <input type="email" class="form-control" name="user" id="user" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Senha:</label>
+          <input type="password" class="form-control" name="pwd" id="pwd" placeholder="Digite sua senha...">
+        </div>
+
+        <button type="submit" class="mt-2 mb-2 w-100 btn btn-light">Entrar</button>
+        <a href="/cadastro" class="d-flex justify-content-center text-center text-white">Quero me cadastrar.</a>
+      </form>
+    </div>
+  </div>
+</div>

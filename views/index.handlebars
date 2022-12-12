@@ -1,6 +1,6 @@
-<main class="index-main">
+<main class="index-main container-fluid">
   <div class="container d-flex justify-content-center {{class}}">
-    <h3 class="pt-4 pb-4 text-white">Bem vindo(a), {{user}}!</h3>
+    <h3 class="pt-4 pb-4 text-white">Bem vindo(a), {{usuario.nome}}!</h3>
   </div>
   <div class="d-flex row justify-content-between align-items-center">
     <label class="text-end etiqueta mt-4">Filmes em cartaz</label>
@@ -10,36 +10,15 @@
     </div>
   </div>
   <div class="container-fluid d-flex justify-content-center row mt-4">
+    {{#each listaFilme}}
     <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="/filme">
-        <img src="/assets/filmes/aedum.jpg" alt="" />
-        <p>A espera de um milagre</p>
+      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center"
+        href="/filme/{{ id_filme }}">
+        <img src="{{fotoURL}}" alt="" />
+        <p>{{nome}}</p>
       </a>
     </div>
-    <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
-        <img src="/assets/filmes/click.jpg" alt="" />
-        <p>Click</p>
-      </a>
-    </div>
-    <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
-        <img src="/assets/filmes/af.jpg" alt="" />
-        <p>Animais Fantásticos</p>
-      </a>
-    </div>
-    <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
-        <img src="/assets/filmes/crepusculo.jpg" alt="" />
-        <p>Crepusculo</p>
-      </a>
-    </div>
-    <div class="filme col-xl-2 col-md-3 col-xs-12">
-      <a class="filme text-decoration-none d-flex flex-column justify-content-center align-items-center" href="">
-        <img src="/assets/filmes/ha.jpg" alt="" />
-        <p>Homem Aranha</p>
-      </a>
-    </div>
+    {{/each}}
   </div>
   <div class="m-auto h4 pb-2 mb-4 w-75 text-danger border-bottom border-light opacity-25">
   </div>
